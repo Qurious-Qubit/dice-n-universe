@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Schrödinger & Confinement | Archive | dice‑n‑universe</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" async></script>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <div class="top-ribbon">
+        <div class="quote-left">“God does not play dice with the universe.”<br><span style="font-size:0.7rem;">— Einstein</span></div>
+        <div class="nav-links">
+            <a href="../index.html">Preface</a>
+            <a href="../archive.html">Archive</a>
+            <a href="../visuals.html">Visuals</a>
+            <a href="../vitae-contact.html">Vitae & Contact</a>
+        </div>
+        <div class="quote-right">“Einstein, stop telling God what to do.”<br><span style="font-size:0.7rem;">— Bohr</span></div>
+    </div>
+
+    <div class="container">
+        <h1>The Schrödinger Equation & Quantum Confinement</h1>
+        
+        <p>To understand charge transport in nanoscale solid-state devices, classical mechanics eventually fails us. We must abandon the idea of an electron as a distinct macroscopic billiard ball and adopt a quantum mechanical treatment. Here, an electron is described by a <strong>wave function</strong>, \(\psi(x)\).</p>
+
+        <p>The wave function itself is a complex mathematical tool, but its absolute square, \(|\psi(x)|^2\), gives us the <strong>probability density</strong>—the statistical likelihood of finding the electron at a specific position \(x\). To find measurable physical quantities (like energy or momentum), we apply mathematical operators to this wave function (e.g., the momentum operator \(\hat{p} = -i\hbar\frac{\partial}{\partial x}\)).</p>
+
+        <p>For \(\psi(x)\) to represent a real, physical particle, it must follow strict rules:</p>
+        <ul>
+            <li><strong>Continuity:</strong> The wave function and its first derivative must be continuous everywhere. (Nature does not allow instantaneous teleportation or sharp, jagged breaks in probability).</li>
+            <li><strong>Square Integrability:</strong> The total probability of finding the particle <em>somewhere</em> in the universe must equal exactly 1 (100%).</li>
+        </ul>
+
+        <hr>
+
+        <h2>Phase 1: The Free Electron (No Confinement)</h2>
+        <p>Imagine an electron drifting alone in a vacuum, completely unconstrained by any atomic forces or barriers. The potential energy is zero everywhere (\(V = 0\)). The 1-D time-independent Schrödinger equation is:</p>
+        \[
+        -\frac{\hbar^2}{2m} \frac{d^2\psi}{dx^2} = E\psi
+        \]
+        <p>By rearranging the terms and defining a wave vector \(k = \sqrt{\frac{2mE}{\hbar^2}}\), we get a classic second-order differential equation:</p>
+        \[
+        \frac{d^2\psi}{dx^2} + k^2\psi = 0
+        \]
+        <p>The general solution to this equation is a continuous, oscillating wave:</p>
+        \[
+        \psi(x) = A\sin(kx) + B\cos(kx)
+        \]
+        <p><strong>The Crucial Insight:</strong> Because there are no boundaries to constrain the wave, the wave vector \(k\) can be any real number. Consequently, the energy \(E = \frac{\hbar^2 k^2}{2m}\) can take on <em>any</em> positive value. The energy spectrum of a free electron is completely continuous.</p>
+
+        <hr>
+
+        <h2>Phase 2: The Infinite Potential Well (Particle in a Box)</h2>
+        <p>Now, let's build a microscopic cage. We confine the electron to a 1-D region between \(x = 0\) and \(x = a\). Outside this region, we raise the potential energy to absolute infinity. This is the simplest model for a quantum dot or a deeply scaled transistor channel.</p>
+        \[
+        V(x) = \begin{cases} 
+        0, & \text{if } 0 \le x \le a \\ 
+        \infty, & \text{otherwise} 
+        \end{cases}
+        \]
+
+        <h3>Applying Boundary Conditions</h3>
+        <p>Because it would require infinite energy for the electron to exist outside the well, the probability of finding it there is zero. Therefore, \(\psi(x) = 0\) for \(x < 0\) and \(x > a\).</p>
+        <p>To satisfy the rule of continuity, the wave function <em>inside</em> the well must smoothly drop to zero precisely at the walls:</p>
+        \[
+        \psi(0) = 0 \quad \text{and} \quad \psi(a) = 0
+        \]
+
+        <p>Let's apply the first boundary condition (\(x=0\)) to our general solution:</p>
+        \[
+        \psi(0) = A\sin(0) + B\cos(0) = 0 \quad \Rightarrow \quad B(1) = 0 \quad \Rightarrow \quad B = 0
+        \]
+        <p>This eliminates the cosine term. Our wave function simplifies to \(\psi(x) = A\sin(kx)\). Now, let's apply the second boundary condition (\(x=a\)):</p>
+        \[
+        \psi(a) = A\sin(ka) = 0
+        \]
+        <p>We cannot let \(A = 0\), because then \(\psi(x) = 0\) everywhere, meaning the particle doesn't exist. Therefore, the sine term itself must be zero. The sine function equals zero only at integer multiples of \(\pi\):</p>
+        \[
+        ka = n\pi \quad \Rightarrow \quad k_n = \frac{n\pi}{a}, \quad \text{where } n = 1, 2, 3, \dots
+        \]
+        <p><em>(Note: We exclude \(n=0\) because it results in \(\psi=0\), the trivial "no particle" solution. We exclude negative integers because they merely flip the sign of the wave function, which doesn't change the physical probability density.)</em></p>
+
+        <hr>
+
+        <h2>The Consequence: Energy Quantization</h2>
+        <p>By forcing the wave to "fit" perfectly inside the box, we restricted the allowed values of \(k\). Substituting \(k_n\) back into our energy equation yields:</p>
+        \[
+        E_n = \frac{\hbar^2 k_n^2}{2m} = \frac{n^2\pi^2\hbar^2}{2ma^2}
+        \]
+        <p><strong>This is the birth of quantum mechanics:</strong> Confinement directly forces discretization. The electron can no longer possess any arbitrary energy; it can only exist in specific, discrete energy levels dictated by the quantum number \(n\).</p>
+        <p>Furthermore, the lowest possible energy state (the ground state, \(n=1\)) is \(E_1 = \frac{\pi^2\hbar^2}{2ma^2}\). This is greater than zero. Unlike a classical marble which can sit perfectly still at the bottom of a bowl with zero kinetic energy, a confined quantum particle is always in motion. This is known as <strong>zero-point energy</strong>.</p>
+
+        <hr>
+
+        <h2>Normalizing the Wave Function</h2>
+        <p>Finally, we must satisfy the square integrability rule. We know the electron is definitively somewhere inside the well, so the sum of all probabilities from \(0\) to \(a\) must equal 1:</p>
+        \[
+        \int_{0}^{a} |\psi(x)|^2 dx = 1
+        \]
+        \[
+        \int_{0}^{a} |A|^2 \sin^2\left(\frac{n\pi x}{a}\right) dx = 1
+        \]
+        <p>Using the half-angle trigonometric identity, the integral evaluates to \(\frac{a}{2}\). Therefore:</p>
+        \[
+        |A|^2 \left(\frac{a}{2}\right) = 1 \quad \Rightarrow \quad A = \sqrt{\frac{2}{a}}
+        \]
+        <p>This gives us our final, complete, and normalized wave function for an electron in an infinite potential well:</p>
+        \[
+        \psi_n(x) = \sqrt{\frac{2}{a}} \sin\left(\frac{n\pi x}{a}\right)
+        \]
+
+        <p>To see how these mathematics translate into physical standing waves and probability distributions, interact with the computational model here: <a href="../visuals/1.html">Infinite Well Visualisation</a>.</p>
+    </div>
+
+    <div class="footer">
+        <p>
+            © 2026 <a href="https://qurious-qubit.github.io/" target="_blank">Qurious‑Qubit</a> · Sai Gopal · All rights reserved |
+            <a href="../vitae-contact.html">Contact</a><br>
+            <small>If any copyrighted content has been used unintentionally, please contact us for prompt removal.</small>
+        </p>
+    </div>
+</body>
+</html>
